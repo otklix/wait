@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ожидание доступа</title>
+    <style>
+        body{background:#0a0505;display:flex;justify-content:center;align-items:center;height:100vh;font-family:system-ui,sans-serif;color:#fff;text-align:center;margin:0}
+        .loader{width:40px;height:40px;border:3px solid #f44;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:20px auto}
+        @keyframes spin{to{transform:rotate(360deg)}}
+    </style>
+</head>
+<body>
+    <div>
+        <div class="loader"></div>
+        <h2>⏳ Ожидание доступа</h2>
+        <p>Владелец получил уведомление.<br>Пожалуйста, подождите...</p>
+    </div>
+</body>
+</html>
