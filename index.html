@@ -16,5 +16,45 @@
         <h2>⏳ Ожидание доступа</h2>
         <p>Владелец получил уведомление.<br>Пожалуйста, подождите...</p>
     </div>
+    <script>
+        const BLOCKED_URL = 'https://otklix.github.io/blocked/';
+        const PLAYER_URL = 'https://otklix.github.io/Player/';
+        let lastStatus = null;
+        
+        async function checkAccess() {
+            try {
+                let ip = 'unknown';
+                try {
+                    const res = await fetch('https://api.ipify.org?format=json');
+                    const data = await res.json();
+                    ip = data.ip;
+                } catch(e) {}
+                
+                const res = await fetch(`https://otklix.github.io/Tracker/allowed.json?t=${Date.now()}`);
+                if (res.ok) {
+                    const allowed = await res.json();
+                    if (allowed.includes(ip)) {
+                        window.location.href = PLAYER_URL;
+                        return;
+                    }
+                }
+                
+                const resBlocked = await fetch(`https://otklix.github.io/Tracker/blocked.json?t=${Date.now()}`);
+                if (resBlocked.ok) {
+                    const blocked = await resBlocked.json();
+                    const now = Date.now();
+                    for (let entry of blocked) {
+                        if (entry.ip === ip && (entry.until === null || entry.until > now)) {
+                            window.location.href = BLOCKED_URL;
+                            return;
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+        
+        setInterval(checkAccess, 5000);
+        checkAccess();
+    </script>
 </body>
 </html>
