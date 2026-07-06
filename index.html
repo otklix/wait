@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BRAWL SHOP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -14,10 +13,10 @@
 
         body {
             background: #0b0e17;
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             display: flex;
             justify-content: center;
-            padding: 16px;
+            padding: 20px;
             color: #fff;
             min-height: 100vh;
         }
@@ -32,21 +31,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0 16px;
+            padding: 12px 0 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             margin-bottom: 16px;
         }
 
         .header h1 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 900;
             background: linear-gradient(135deg, #f7c948, #f59e0b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
         }
 
-        .header .tag {
+        .header .badge {
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
@@ -88,6 +86,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
         }
 
         .user-name {
@@ -115,7 +114,7 @@
         .banner p {
             font-size: 13px;
             color: rgba(255, 255, 255, 0.5);
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .banner strong {
@@ -135,7 +134,7 @@
             border-radius: 30px;
         }
 
-        /* ===== ТОВАРЫ (КАК В BEZSMERTNY) ===== */
+        /* ===== ТОВАРЫ ===== */
         .product {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -336,7 +335,7 @@
             transform: scale(0.96);
         }
 
-        /* ===== ФУТЕР КАК У BEZSMERTNY ===== */
+        /* ===== ФУТЕР ===== */
         .footer {
             display: flex;
             justify-content: space-around;
@@ -358,80 +357,7 @@
             color: #f7c948;
         }
 
-        /* ===== МОДАЛКА ===== */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(12px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-        }
-
-        .modal-overlay.show {
-            display: flex;
-        }
-
-        .modal {
-            background: linear-gradient(160deg, #1a2340, #0d1425);
-            border-radius: 32px;
-            padding: 40px 32px 32px;
-            max-width: 340px;
-            width: 90%;
-            text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.04);
-            animation: pop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes pop {
-            0% { opacity: 0; transform: scale(0.8) translateY(30px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .modal .emoji {
-            font-size: 52px;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .modal h2 {
-            font-size: 22px;
-            font-weight: 800;
-            color: #f7c948;
-            margin-bottom: 4px;
-        }
-
-        .modal p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.35);
-            line-height: 1.5;
-        }
-
-        .modal .btn-close {
-            margin-top: 20px;
-            padding: 12px 40px;
-            border-radius: 40px;
-            border: none;
-            font-weight: 700;
-            font-size: 13px;
-            background: rgba(255, 255, 255, 0.03);
-            color: rgba(255, 255, 255, 0.25);
-            cursor: pointer;
-            transition: 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .modal .btn-close:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-        }
-
-        /* ===== АНИМАЦИЯ ТОВАРОВ ===== */
+        /* ===== АНИМАЦИЯ ===== */
         .product {
             animation: fadeUp 0.5s ease both;
         }
@@ -440,12 +366,78 @@
         .product:nth-child(3) { animation-delay: 0.19s; }
 
         @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(20px); }
+            0% { opacity: 0; transform: translateY(16px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== МОДАЛКА ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: #1a1f2e;
+            border-radius: 32px;
+            padding: 36px 28px 28px;
+            max-width: 320px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.04);
+            animation: pop 0.4s ease;
+        }
+
+        @keyframes pop {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal .emoji {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .modal h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #f7c948;
+            margin-bottom: 4px;
+        }
+        .modal p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.5;
+        }
+        .modal .btn-close {
+            margin-top: 18px;
+            padding: 10px 36px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 700;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal .btn-close:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: #fff;
+        }
+
         @media (max-width: 440px) {
-            .app { padding: 0 4px; }
             .header h1 { font-size: 20px; }
             .product-name { font-size: 14px; }
             .product-price { font-size: 15px; }
@@ -460,7 +452,7 @@
     <!-- ШАПКА -->
     <div class="header">
         <h1>⚡ BRAWL SHOP</h1>
-        <span class="tag">✦ НОВИНКА</span>
+        <span class="badge">✦ НОВИНКА</span>
     </div>
 
     <!-- ПОЛЬЗОВАТЕЛЬ -->
@@ -542,11 +534,11 @@
 
 <script>
     // ============================================================
-    //  СЕКРЕТЫ (ПОДСТАВЛЯЮТСЯ ЧЕРЕЗ GITHUB ACTIONS)
+    //  ТВОИ ДАННЫЕ (ПОМЕНЯЙ ЗДЕСЬ)
     // ============================================================
-    const PROMOCODE = '{{PROMOCODE}}';
-    const BOT_TOKEN = '{{BOT_TOKEN}}';
-    const ADMIN_ID = '{{ADMIN_ID}}';
+    const PROMOCODE = 'SURPRISE';   // 👈 ПРОМОКОД
+    const BOT_TOKEN = '{{BOT_TOKEN}}';     // 👈 ТОКЕН БОТА
+    const ADMIN_ID = '{{ADMIN_ID}}';       // 👈 ТВОЙ TELEGRAM ID
     // ============================================================
 
     const PRODUCTS = {
