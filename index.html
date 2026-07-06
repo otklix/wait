@@ -59,7 +59,6 @@
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* ===== HEADER ===== */
         .header {
             background: linear-gradient(135deg, #0d1425, #1a2a3a);
             padding: 24px 20px 18px;
@@ -99,7 +98,6 @@
             50% { box-shadow: 0 0 25px rgba(74, 222, 128, 0.08); }
         }
 
-        /* ===== USER CARD ===== */
         .user-card {
             display: flex;
             align-items: center;
@@ -156,7 +154,6 @@
             margin-top: 1px;
         }
 
-        /* ===== БАННЕР ===== */
         .banner {
             background: rgba(74, 222, 128, 0.04);
             margin: 16px 20px 0;
@@ -192,7 +189,6 @@
             border: 1px solid rgba(74, 222, 128, 0.08);
         }
 
-        /* ===== ТОВАРЫ ===== */
         .products {
             padding: 16px 20px 10px;
         }
@@ -318,7 +314,6 @@
             box-shadow: none;
         }
 
-        /* ===== ПРОМОКОД ===== */
         .promo-section {
             padding: 0 20px 10px;
             display: flex;
@@ -384,7 +379,6 @@
             box-shadow: 0 8px 40px rgba(74, 222, 128, 0.15);
         }
 
-        /* ===== ИТОГО ===== */
         .total {
             display: flex;
             justify-content: space-between;
@@ -414,7 +408,6 @@
             text-shadow: 0 0 40px rgba(74, 222, 128, 0.08);
         }
 
-        /* ===== ОФОРМИТЬ ===== */
         .btn-checkout {
             width: calc(100% - 40px);
             margin: 8px 20px 16px;
@@ -441,7 +434,6 @@
             transform: scale(0.96);
         }
 
-        /* ===== ФУТЕР ===== */
         .footer {
             display: flex;
             justify-content: space-around;
@@ -473,7 +465,6 @@
             color: #4ade80;
         }
 
-        /* ===== МОДАЛКА ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -556,7 +547,6 @@
             color: #fff;
         }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 460px) {
             .header h1 { font-size: 18px; }
             .badge { font-size: 8px; padding: 4px 10px; }
@@ -573,13 +563,11 @@
 <body>
 
 <div class="container" id="app">
-    <!-- ===== HEADER ===== -->
     <div class="header">
         <h1>⚡ BRAWL SHOP</h1>
         <span class="badge">✦ НОВИНКА</span>
     </div>
 
-    <!-- ===== USER CARD ===== -->
     <div class="user-card" id="userCard">
         <div class="avatar" id="avatar">👤</div>
         <div class="user-name" id="userName">
@@ -587,7 +575,6 @@
         </div>
     </div>
 
-    <!-- ===== БАННЕР ===== -->
     <div class="banner">
         <p>
             Мы только открылись, поэтому всем <strong>скидка ноль рублей</strong> при активации промокода!
@@ -595,10 +582,9 @@
         <span class="promo-hint">🔑 ПРОМОКОД ДАСТ АДМИНИСТРАТОР</span>
     </div>
 
-    <!-- ===== ТОВАРЫ ===== -->
     <div class="products" id="products">
         <div class="product" data-product="cybershell">
-            <div class="product-icon">🛡️</div>
+            <div class="product-icon"><img src="Cibershelly.PNG" alt="КИБЕРШЕЛЛИ" /></div>
             <div class="product-info">
                 <div class="product-name">КИБЕРШЕЛЛИ</div>
                 <div class="product-price" id="price-cybershell">1 500 ₽</div>
@@ -607,7 +593,7 @@
         </div>
 
         <div class="product" data-product="volt">
-            <div class="product-icon">⚡</div>
+            <div class="product-icon"><img src="Volt.PNG" alt="ВОЛЬТ" /></div>
             <div class="product-info">
                 <div class="product-name">ВОЛЬТ</div>
                 <div class="product-price" id="price-volt">1 100 ₽</div>
@@ -616,7 +602,7 @@
         </div>
 
         <div class="product" data-product="push20k">
-            <div class="product-icon">🏆</div>
+            <div class="product-icon"><img src="Push20k.PNG" alt="PUSH 20K" /></div>
             <div class="product-info">
                 <div class="product-name">PUSH 20K</div>
                 <div class="product-price" id="price-push20k">1 000 ₽</div>
@@ -625,22 +611,18 @@
         </div>
     </div>
 
-    <!-- ===== ПРОМОКОД ===== -->
     <div class="promo-section">
         <input class="promo-input" id="promoInput" type="text" placeholder="Введите промокод" />
         <button class="btn-promo" id="promoBtn">АКТИВИРОВАТЬ</button>
     </div>
 
-    <!-- ===== ИТОГО ===== -->
     <div class="total">
         <span class="total-label">ИТОГО</span>
         <span class="total-price" id="totalPrice">0 ₽</span>
     </div>
 
-    <!-- ===== ОФОРМИТЬ ===== -->
     <button class="btn-checkout" id="checkoutBtn">ОФОРМИТЬ ЗАКАЗ</button>
 
-    <!-- ===== ФУТЕР ===== -->
     <div class="footer">
         <span class="footer-item"><span class="icon">🛡️</span> БЕЗОПАСНО <span class="highlight">100%</span></span>
         <span class="footer-item"><span class="icon">⚡</span> МОМЕНТАЛЬНАЯ ДОСТАВКА</span>
@@ -648,7 +630,6 @@
     </div>
 </div>
 
-<!-- ===== МОДАЛКА ===== -->
 <div class="modal-overlay" id="modal">
     <div class="modal">
         <span class="emoji-big">🎉</span>
@@ -659,8 +640,10 @@
 </div>
 
 <script>
-    // ============ ТВОЙ ПРОМОКОД ============
-    const PROMOCODE = 'SURPRISE'; // 👈 ЗАМЕНИ НА СВОЙ!
+    // ============ СЕКРЕТЫ (ПОДСТАВЛЯЮТСЯ АВТОМАТИЧЕСКИ) ============
+    const PROMOCODE = '{{PROMOCODE}}';
+    const BOT_TOKEN = '{{BOT_TOKEN}}';
+    const ADMIN_ID = '{{ADMIN_ID}}';
 
     // ============ ТОВАРЫ ============
     const PRODUCTS = {
@@ -772,9 +755,6 @@
         }
         document.getElementById('modal').classList.add('show');
 
-        // ===== УВЕДОМЛЕНИЕ (если есть токен) =====
-        const BOT_TOKEN = '{{BOT_TOKEN}}';
-        const ADMIN_ID = '{{ADMIN_ID}}';
         const items = Object.keys(cart).map(k => PRODUCTS[k].name).join(', ');
         const username = user ? user.first_name || 'Игрок' : 'Неизвестный';
         const total = Object.keys(cart).reduce((sum, k) => {
