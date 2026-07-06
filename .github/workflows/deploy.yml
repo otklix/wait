@@ -1,0 +1,25 @@
+name: Deploy Brawl Shop
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build HTML with secrets
+        run: |
+          sed -i "s/{{PROMOCODE}}/${{ secrets.PROMOCODE }}/g" index.html
+          sed -i "s/{{BOT_TOKEN}}/${{ secrets.BOT_TOKEN }}/g" index.html
+          sed -i "s/{{ADMIN_ID}}/${{ secrets.ADMIN_ID }}/g" index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
