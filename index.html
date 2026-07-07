@@ -6,11 +6,16 @@
     <title>BRAWL SHOP</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
+        /* ============================================================
+           ОСНОВНЫЕ СТИЛИ
+           ============================================================ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
+
         body {
             background: #060b12;
             color: #fff;
@@ -22,16 +27,18 @@
             padding-bottom: 80px;
             position: relative;
         }
+
         body::before {
             content: "";
             position: fixed;
             inset: -40%;
             background: conic-gradient(#00ff88, #00cc66, #00994d, #00ff88);
             filter: blur(220px);
-            opacity: 0.05;
+            opacity: 0.04;
             animation: rotate 18s linear infinite;
             z-index: -1;
         }
+
         @keyframes rotate {
             100% { transform: rotate(360deg); }
         }
@@ -41,28 +48,33 @@
             width: 100%;
         }
 
-        /* ===== ШАПКА ===== */
+        /* ============================================================
+           ШАПКА
+           ============================================================ */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 0 16px;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.08);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.06);
             margin-bottom: 16px;
         }
+
         .header h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             background: linear-gradient(135deg, #00ff88, #00cc66);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.15);
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
         }
+
         .header .cart-badge {
             position: relative;
-            font-size: 22px;
+            font-size: 20px;
             cursor: pointer;
         }
+
         .header .cart-badge .count {
             position: absolute;
             top: -6px;
@@ -77,25 +89,31 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
         }
 
-        /* ===== БАННЕР ===== */
+        /* ============================================================
+           БАННЕР
+           ============================================================ */
         .banner {
-            background: rgba(0, 255, 136, 0.03);
-            border: 1px solid rgba(0, 255, 136, 0.06);
+            background: rgba(0, 255, 136, 0.02);
+            border: 1px solid rgba(0, 255, 136, 0.04);
             border-radius: 16px;
             padding: 14px 16px;
             text-align: center;
             margin-bottom: 18px;
         }
+
         .banner p {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.5;
         }
+
         .banner strong {
             color: #00ff88;
         }
+
         .banner .hint {
             display: inline-block;
             margin-top: 6px;
@@ -103,13 +121,66 @@
             font-weight: 700;
             text-transform: uppercase;
             color: #00ff88;
-            background: rgba(0, 255, 136, 0.05);
+            background: rgba(0, 255, 136, 0.04);
             padding: 2px 14px;
             border-radius: 30px;
-            border: 1px solid rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.04);
         }
 
-        /* ===== ТОВАРЫ ===== */
+        /* ============================================================
+           ПРОМОКОД
+           ============================================================ */
+        .promo-section {
+            display: flex;
+            gap: 8px;
+            margin: 14px 0 12px;
+        }
+
+        .promo-input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 255, 136, 0.04);
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .promo-input:focus {
+            border-color: rgba(0, 255, 136, 0.08);
+        }
+
+        .promo-input::placeholder {
+            color: rgba(255, 255, 255, 0.06);
+            text-transform: none;
+        }
+
+        .btn-promo {
+            padding: 10px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 255, 136, 0.04);
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-promo.active {
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #060b12;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.06);
+        }
+
+        /* ============================================================
+           КАРТОЧКИ ТОВАРОВ
+           ============================================================ */
         .product {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(0, 255, 136, 0.04);
@@ -123,12 +194,14 @@
             transition: 0.3s;
             position: relative;
         }
+
         .product:hover {
             background: rgba(0, 255, 136, 0.02);
-            border-color: rgba(0, 255, 136, 0.08);
+            border-color: rgba(0, 255, 136, 0.06);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.04);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.02);
         }
+
         .product .hot-badge {
             position: absolute;
             top: 8px;
@@ -141,15 +214,17 @@
             border-radius: 20px;
             letter-spacing: 0.3px;
         }
+
         .product-icon {
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
             background: rgba(0, 255, 136, 0.02);
             border: 1px solid rgba(0, 255, 136, 0.04);
         }
+
         .product-icon img {
             width: 100%;
             height: 100%;
@@ -157,35 +232,43 @@
             display: block;
             padding: 4px;
         }
+
         .product-info {
             flex: 1;
         }
+
         .product-name {
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             color: #f0f2f8;
         }
+
         .product-price {
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             color: #00ff88;
         }
+
         .product-price .old {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.1);
             text-decoration: line-through;
             margin-right: 6px;
             font-weight: 400;
         }
+
         .product .rating {
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.1);
         }
+
         .product .rating .stars {
             color: #00ff88;
         }
 
-        /* ===== КНОПКИ ===== */
+        /* ============================================================
+           КНОПКИ
+           ============================================================ */
         .btn-cart {
             font-size: 10px;
             font-weight: 700;
@@ -197,64 +280,60 @@
             color: #060b12;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.04);
         }
+
         .btn-cart:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.08);
         }
+
         .btn-cart.added {
-            background: rgba(0, 255, 136, 0.06);
+            background: rgba(0, 255, 136, 0.04);
             color: #00ff88;
-            border: 1px solid rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.06);
             box-shadow: none;
         }
 
-        /* ===== ПРОМОКОД ===== */
-        .promo-section {
-            display: flex;
-            gap: 8px;
-            margin: 14px 0 12px;
-        }
-        .promo-input {
-            flex: 1;
-            padding: 10px 14px;
+        .btn-checkout {
+            width: 100%;
+            padding: 14px;
             border-radius: 40px;
-            border: 1px solid rgba(0, 255, 136, 0.04);
-            background: rgba(255, 255, 255, 0.02);
-            color: #fff;
-            font-size: 13px;
-            outline: none;
+            border: none;
+            font-weight: 800;
+            font-size: 16px;
             text-transform: uppercase;
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #060b12;
+            cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 4px 30px rgba(0, 255, 136, 0.04);
         }
-        .promo-input:focus {
-            border-color: rgba(0, 255, 136, 0.1);
+
+        .btn-checkout:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.08);
         }
-        .promo-input::placeholder {
-            color: rgba(255, 255, 255, 0.08);
-            text-transform: none;
-        }
-        .btn-promo {
-            padding: 10px 20px;
-            border-radius: 40px;
-            border: 1px solid rgba(0, 255, 136, 0.04);
-            background: rgba(255, 255, 255, 0.02);
-            color: rgba(255, 255, 255, 0.15);
-            font-weight: 700;
-            font-size: 11px;
-            text-transform: uppercase;
+
+        .btn-remove {
+            background: rgba(255, 0, 0, 0.04);
+            border: none;
+            color: #ff4757;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 18px;
             cursor: pointer;
             transition: 0.3s;
         }
-        .btn-promo.active {
-            background: linear-gradient(135deg, #00ff88, #00cc66);
-            color: #060b12;
-            border-color: transparent;
-            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.08);
+
+        .btn-remove:hover {
+            background: rgba(255, 0, 0, 0.08);
         }
 
-        /* ===== НАВИГАЦИЯ ===== */
+        /* ============================================================
+           НАВИГАЦИЯ
+           ============================================================ */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -270,6 +349,7 @@
             margin: 0 auto;
             z-index: 100;
         }
+
         .bottom-nav .nav-item {
             display: flex;
             flex-direction: column;
@@ -277,7 +357,7 @@
             gap: 2px;
             background: none;
             border: none;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.06);
             font-size: 10px;
             font-weight: 600;
             font-family: "Poppins", sans-serif;
@@ -286,12 +366,15 @@
             position: relative;
             transition: 0.3s;
         }
+
         .bottom-nav .nav-item .icon {
             font-size: 22px;
         }
+
         .bottom-nav .nav-item.active {
             color: #00ff88;
         }
+
         .bottom-nav .nav-item .nav-count {
             position: absolute;
             top: -2px;
@@ -307,29 +390,43 @@
             align-items: center;
             justify-content: center;
         }
+
         .bottom-nav .nav-item .nav-count.show {
             display: flex;
         }
 
-        /* ===== СТРАНИЦЫ ===== */
+        /* ============================================================
+           СТРАНИЦЫ
+           ============================================================ */
         .page {
             display: none;
+            animation: fadeSlide 0.3s ease;
         }
+
         .page.active {
             display: block;
         }
 
-        /* ===== КОРЗИНА ===== */
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================================
+           КОРЗИНА
+           ============================================================ */
         .cart-empty {
             text-align: center;
             padding: 40px 20px;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.06);
         }
+
         .cart-empty .big-icon {
             font-size: 64px;
             display: block;
             margin-bottom: 12px;
         }
+
         .cart-item {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(0, 255, 136, 0.04);
@@ -340,6 +437,7 @@
             align-items: center;
             gap: 12px;
         }
+
         .cart-item .item-icon {
             width: 48px;
             height: 48px;
@@ -348,37 +446,27 @@
             background: rgba(0, 255, 136, 0.02);
             border: 1px solid rgba(0, 255, 136, 0.04);
         }
+
         .cart-item .item-icon img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             padding: 4px;
         }
+
         .cart-item .item-info {
             flex: 1;
         }
+
         .cart-item .item-name {
             font-weight: 600;
             font-size: 14px;
         }
+
         .cart-item .item-price {
             font-weight: 700;
             font-size: 14px;
             color: #00ff88;
-        }
-        .cart-item .btn-remove {
-            background: rgba(255, 0, 0, 0.04);
-            border: none;
-            color: #ff4757;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .cart-item .btn-remove:hover {
-            background: rgba(255, 0, 0, 0.08);
         }
 
         .cart-total {
@@ -388,37 +476,22 @@
             border-top: 1px solid rgba(0, 255, 136, 0.04);
             margin-top: 10px;
         }
+
         .cart-total .label {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.06);
         }
+
         .cart-total .total-price {
             font-size: 24px;
             font-weight: 900;
             color: #00ff88;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.05);
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.04);
         }
 
-        .btn-checkout {
-            width: 100%;
-            padding: 14px;
-            border-radius: 40px;
-            border: none;
-            font-weight: 800;
-            font-size: 16px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #00ff88, #00cc66);
-            color: #060b12;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 30px rgba(0, 255, 136, 0.06);
-        }
-        .btn-checkout:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.12);
-        }
-
-        /* ===== ПРОФИЛЬ ===== */
+        /* ============================================================
+           ПРОФИЛЬ
+           ============================================================ */
         .profile-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(0, 255, 136, 0.04);
@@ -427,6 +500,7 @@
             text-align: center;
             margin-top: 10px;
         }
+
         .profile-card .profile-avatar {
             width: 80px;
             height: 80px;
@@ -436,19 +510,23 @@
             background: linear-gradient(135deg, #00ff88, #00cc66);
             border: 2px solid rgba(0, 255, 136, 0.04);
         }
+
         .profile-card .profile-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .profile-card .profile-name {
             font-size: 20px;
             font-weight: 700;
         }
+
         .profile-card .profile-username {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.06);
         }
+
         .profile-card .profile-stats {
             display: flex;
             justify-content: space-around;
@@ -457,36 +535,221 @@
             border-top: 1px solid rgba(0, 255, 136, 0.04);
             border-bottom: 1px solid rgba(0, 255, 136, 0.04);
         }
+
         .profile-card .profile-stats .stat {
             text-align: center;
         }
+
         .profile-card .profile-stats .stat .num {
             font-size: 20px;
             font-weight: 700;
             color: #00ff88;
         }
+
         .profile-card .profile-stats .stat .label {
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.06);
         }
+
         .profile-card .btn-support {
             width: 100%;
             padding: 12px;
             border-radius: 40px;
             border: 1px solid rgba(0, 255, 136, 0.04);
             background: rgba(255, 255, 255, 0.02);
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.06);
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
             transition: 0.3s;
         }
+
         .profile-card .btn-support:hover {
             background: rgba(0, 255, 136, 0.02);
             color: #fff;
         }
 
-        /* ===== УВЕДОМЛЕНИЯ ===== */
+        /* ============================================================
+           ГРИД КАТАЛОГА
+           ============================================================ */
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .category-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 255, 136, 0.04);
+            border-radius: 16px;
+            padding: 16px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category-item:hover {
+            background: rgba(0, 255, 136, 0.02);
+            border-color: rgba(0, 255, 136, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .category-item .icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .category-item .name {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ============================================================
+           МОДАЛЬНЫЕ ОКНА
+           ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: rgba(6, 11, 18, 0.95);
+            border: 1px solid rgba(0, 255, 136, 0.06);
+            border-radius: 28px;
+            padding: 32px 24px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            animation: pop 0.3s ease;
+        }
+
+        @keyframes pop {
+            0% { opacity: 0; transform: scale(0.85) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal .emoji {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .modal h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .modal p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.2);
+            line-height: 1.5;
+        }
+
+        .modal .modal-price {
+            font-size: 28px;
+            font-weight: 900;
+            color: #00ff88;
+            margin: 12px 0;
+        }
+
+        .modal .btn-primary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #060b12;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+
+        .modal .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.08);
+        }
+
+        .modal .btn-primary.added {
+            background: rgba(0, 255, 136, 0.04);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.06);
+        }
+
+        .modal .btn-secondary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+
+        .modal .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+        }
+
+        .modal .modal-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 12px;
+            background: rgba(0, 255, 136, 0.02);
+            border: 1px solid rgba(0, 255, 136, 0.04);
+        }
+
+        .modal .modal-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+        .modal .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.06);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-wrap {
+            position: relative;
+        }
+
+        /* ============================================================
+           ТОСТ УВЕДОМЛЕНИЯ
+           ============================================================ */
         .toast {
             position: fixed;
             bottom: 90px;
@@ -500,31 +763,37 @@
             color: #fff;
             font-size: 14px;
             font-weight: 500;
-            z-index: 200;
+            z-index: 300;
             opacity: 0;
             transition: 0.4s;
             pointer-events: none;
             max-width: 340px;
             text-align: center;
         }
+
         .toast.show {
             opacity: 1;
             transform: translateX(-50%) translateY(-10px);
         }
+
         .toast.success {
-            border-color: rgba(0, 255, 136, 0.08);
-        }
-        .toast.error {
-            border-color: rgba(255, 71, 87, 0.08);
+            border-color: rgba(0, 255, 136, 0.06);
         }
 
+        .toast.error {
+            border-color: rgba(255, 71, 87, 0.06);
+        }
+
+        /* ============================================================
+           АДАПТИВ
+           ============================================================ */
         @media (max-width: 440px) {
             .header h1 {
                 font-size: 20px;
             }
             .product-icon {
-                width: 50px;
-                height: 50px;
+                width: 48px;
+                height: 48px;
             }
             .product-name {
                 font-size: 13px;
@@ -532,12 +801,24 @@
             .product-price {
                 font-size: 14px;
             }
+            .category-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .category-item .icon {
+                font-size: 22px;
+            }
+            .category-item .name {
+                font-size: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="app" id="app">
+        <!-- ============================================================
+        ШАПКА
+        ============================================================ -->
         <div class="header">
             <h1>⚡ BRAWL SHOP</h1>
             <div class="cart-badge" onclick="switchPage('cart')">
@@ -546,7 +827,9 @@
             </div>
         </div>
 
-        <!-- ГЛАВНАЯ -->
+        <!-- ============================================================
+        СТРАНИЦА: ГЛАВНАЯ
+        ============================================================ -->
         <div class="page active" id="page-home">
             <div class="banner">
                 <p>Мы только открылись, поэтому всем <strong>скидка ноль рублей</strong> при активации промокода!</p>
@@ -558,18 +841,65 @@
                 <button class="btn-promo" id="promoBtn">АКТИВИРОВАТЬ</button>
             </div>
 
+            <div style="margin-bottom:12px;">
+                <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.06);">🔥 ПОПУЛЯРНЫЕ</span>
+            </div>
             <div id="productsList"></div>
         </div>
 
-        <!-- КАТАЛОГ -->
+        <!-- ============================================================
+        СТРАНИЦА: КАТАЛОГ
+        ============================================================ -->
         <div class="page" id="page-catalog">
             <div style="padding: 8px 0 16px;">
-                <input class="promo-input" style="width:100%;" id="searchInput" type="text" placeholder="🔍 Поиск..." />
+                <input class="promo-input" style="width:100%;" id="searchInput" type="text" placeholder="🔍 Поиск товаров..." />
             </div>
+
+            <div class="category-grid">
+                <div class="category-item" onclick="switchPage('home')">
+                    <span class="icon">🔥</span>
+                    <span class="name">Популярные</span>
+                </div>
+                <div class="category-item" onclick="showToast('⭐ Мифические скины','success')">
+                    <span class="icon">⭐</span>
+                    <span class="name">Мифические</span>
+                </div>
+                <div class="category-item" onclick="showToast('💎 Легендарные скины','success')">
+                    <span class="icon">💎</span>
+                    <span class="name">Легендарные</span>
+                </div>
+                <div class="category-item" onclick="showToast('👤 Все бойцы','success')">
+                    <span class="icon">👤</span>
+                    <span class="name">Бойцы</span>
+                </div>
+                <div class="category-item" onclick="showToast('💎 Гемы и монеты','success')">
+                    <span class="icon">💎</span>
+                    <span class="name">Гемы</span>
+                </div>
+                <div class="category-item" onclick="showToast('🚀 Услуги вкачки','success')">
+                    <span class="icon">🚀</span>
+                    <span class="name">Услуги</span>
+                </div>
+                <div class="category-item" onclick="showToast('💰 Акции и скидки','success')">
+                    <span class="icon">💰</span>
+                    <span class="name">Акции</span>
+                </div>
+                <div class="category-item" onclick="showToast('🎮 Боевой пропуск','success')">
+                    <span class="icon">🎮</span>
+                    <span class="name">Боевой пропуск</span>
+                </div>
+                <div class="category-item" onclick="showToast('🎨 Все скины','success')">
+                    <span class="icon">🎨</span>
+                    <span class="name">Все скины</span>
+                </div>
+            </div>
+
             <div id="catalogList"></div>
         </div>
 
-        <!-- КОРЗИНА -->
+        <!-- ============================================================
+        СТРАНИЦА: КОРЗИНА
+        ============================================================ -->
         <div class="page" id="page-cart">
             <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">🛒 Корзина</h2>
             <div id="cartList"></div>
@@ -580,7 +910,9 @@
             <button class="btn-checkout" id="checkoutBtn">ОФОРМИТЬ ЗАКАЗ</button>
         </div>
 
-        <!-- ПРОФИЛЬ -->
+        <!-- ============================================================
+        СТРАНИЦА: ПРОФИЛЬ
+        ============================================================ -->
         <div class="page" id="page-profile">
             <div class="profile-card">
                 <div class="profile-avatar"><img src="" alt="" id="profileAvatarImg" /></div>
@@ -596,18 +928,20 @@
                         <div class="label">Дата</div>
                     </div>
                 </div>
-                <button class="btn-support" onclick="showToast('💬 Свяжитесь с нами: @support_bot')">💬 Поддержка</button>
+                <button class="btn-support" onclick="showToast('💬 Свяжитесь с нами: @support_bot','success')">💬 Поддержка</button>
             </div>
         </div>
     </div>
 
-    <!-- НАВИГАЦИЯ -->
+    <!-- ============================================================
+    НАВИГАЦИЯ
+    ============================================================ -->
     <div class="bottom-nav">
         <button class="nav-item active" data-page="home">
             <span class="icon">🏠</span> Главная
         </button>
         <button class="nav-item" data-page="catalog">
-            <span class="icon">🔍</span> Каталог
+            <span class="icon">📦</span> Каталог
         </button>
         <button class="nav-item" data-page="cart">
             <span class="icon">🛒</span> Корзина
@@ -618,10 +952,63 @@
         </button>
     </div>
 
+    <!-- ============================================================
+    МОДАЛКА КАРТОЧКИ ТОВАРА
+    ============================================================ -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal modal-wrap">
+            <button class="close-btn" onclick="closeModal('productModal')">✕</button>
+            <div class="modal-icon"><img id="modalProductImg" src="" alt="" /></div>
+            <h2 id="modalProductName">Товар</h2>
+            <div class="modal-price" id="modalProductPrice">0 ₽</div>
+            <p id="modalProductDesc">Описание товара</p>
+            <button class="btn-primary" id="modalAddCart">В КОРЗИНУ</button>
+            <button class="btn-secondary" onclick="closeModal('productModal')">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    МОДАЛКА ОПЛАТЫ
+    ============================================================ -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <span class="emoji">💳</span>
+            <h2>Выберите способ оплаты</h2>
+            <p style="margin-bottom:12px;">Сумма: <strong id="paymentAmount" style="color:#00ff88;">0 ₽</strong></p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+                <button class="btn-primary" style="font-size:12px;" onclick="processPayment()">🟢 Сбер</button>
+                <button class="btn-primary" style="font-size:12px;" onclick="processPayment()">🟡 Т-Банк</button>
+                <button class="btn-primary" style="font-size:12px;" onclick="processPayment()">🔵 ВТБ</button>
+                <button class="btn-primary" style="font-size:12px;" onclick="processPayment()">🟠 Альфа</button>
+            </div>
+            <button class="btn-secondary" onclick="closeModal('paymentModal')">Отмена</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    МОДАЛКА УСПЕХА
+    ============================================================ -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <span class="emoji">✅</span>
+            <h2>Заказ оформлен!</h2>
+            <p>Администратор свяжется с вами в Telegram.</p>
+            <button class="btn-primary" onclick="closeModal('successModal')">ОТЛИЧНО</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    ТОСТ УВЕДОМЛЕНИЯ
+    ============================================================ -->
     <div class="toast" id="toast"></div>
 
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
     <script>
-        // ===== ДАННЫЕ =====
+        // ============================================================
+        // ДАННЫЕ
+        // ============================================================
         var PROMOCODE = 'SURPRISE';
         var promoActive = false;
         var cart = JSON.parse(localStorage.getItem('brawl_cart') || '{}');
@@ -635,7 +1022,8 @@
             img: 'Cibershelly.PNG',
             hot: true,
             rating: 4.8,
-            reviews: 26539
+            reviews: 26539,
+            desc: 'Легендарный скин Кибершелли'
         }, {
             key: 'volt',
             name: 'ВОЛЬТ',
@@ -644,7 +1032,8 @@
             img: 'Volt.PNG',
             hot: false,
             rating: 4.6,
-            reviews: 12453
+            reviews: 12453,
+            desc: 'Эпический скин Вольт'
         }, {
             key: 'push20k',
             name: 'PUSH 20K',
@@ -653,10 +1042,13 @@
             img: 'Push20k.PNG',
             hot: true,
             rating: 4.9,
-            reviews: 8742
+            reviews: 8742,
+            desc: 'Услуга вкачки 20000 кубков'
         }];
 
-        // ===== TELEGRAM =====
+        // ============================================================
+        // TELEGRAM
+        // ============================================================
         var user = null;
         try {
             if (window.Telegram && window.Telegram.WebApp) {
@@ -671,7 +1063,29 @@
             }
         } catch (_) {}
 
-        // ===== ОБНОВЛЕНИЕ =====
+        // ============================================================
+        // МОДАЛКИ
+        // ============================================================
+        function openModal(id) {
+            document.getElementById(id).classList.add('show');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+
+        // Закрытие по клику вне
+        document.querySelectorAll('.modal-overlay').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('show');
+                }
+            });
+        });
+
+        // ============================================================
+        // ОБНОВЛЕНИЕ
+        // ============================================================
         function updateCartUI() {
             var count = Object.keys(cart).length;
             document.getElementById('cartCount').textContent = count;
@@ -688,6 +1102,9 @@
             localStorage.setItem('brawl_cart', JSON.stringify(cart));
         }
 
+        // ============================================================
+        // РЕНДЕР ТОВАРОВ
+        // ============================================================
         function renderProducts() {
             var html = '';
             PRODUCTS.forEach(function(p) {
@@ -696,7 +1113,7 @@
                     '<span class="old">' + p.price + ' ₽</span> 0 ₽' :
                     p.price + ' ₽';
                 var inCart = cart[p.key] ? true : false;
-                var hotHtml = p.hot ? '<span class="hot-badge">🔥</span>' : '';
+                var hotHtml = p.hot ? '<span class="hot-badge">🔥 ХИТ</span>' : '';
                 html += `
                     <div class="product" onclick="openProduct('${p.key}')">
                         ${hotHtml}
@@ -715,6 +1132,9 @@
             document.getElementById('productsList').innerHTML = html;
         }
 
+        // ============================================================
+        // РЕНДЕР КАТАЛОГА
+        // ============================================================
         function renderCatalog() {
             var search = document.getElementById('searchInput').value.toLowerCase();
             var filtered = PRODUCTS.filter(function(p) {
@@ -744,6 +1164,9 @@
             document.getElementById('catalogList').innerHTML = html;
         }
 
+        // ============================================================
+        // РЕНДЕР КОРЗИНЫ
+        // ============================================================
         function renderCart() {
             var keys = Object.keys(cart);
             var container = document.getElementById('cartList');
@@ -778,6 +1201,9 @@
             document.getElementById('cartTotalPrice').textContent = total + ' ₽';
         }
 
+        // ============================================================
+        // КОРЗИНА
+        // ============================================================
         function toggleCart(key) {
             if (cart[key]) {
                 delete cart[key];
@@ -795,30 +1221,68 @@
             showToast('🗑️ Удалено', 'error');
         }
 
+        // ============================================================
+        // ОТКРЫТИЕ ТОВАРА
+        // ============================================================
+        var currentProductKey = null;
+
         function openProduct(key) {
             var p = PRODUCTS.find(function(item) { return item.key === key; });
             if (!p) return;
+            currentProductKey = key;
             var price = promoActive ? p.priceDisc : p.price;
-            showToast('📦 ' + p.name + '\n' + price + ' ₽', 'success');
+            document.getElementById('modalProductImg').src = p.img;
+            document.getElementById('modalProductName').textContent = p.name;
+            document.getElementById('modalProductPrice').textContent = price + ' ₽';
+            document.getElementById('modalProductDesc').textContent = p.desc + ' ★' + p.rating + ' (' + p.reviews +
+            ' отзывов)';
+            var btn = document.getElementById('modalAddCart');
+            if (cart[key]) {
+                btn.textContent = '✓ В КОРЗИНЕ';
+                btn.classList.add('added');
+            } else {
+                btn.textContent = 'В КОРЗИНУ';
+                btn.classList.remove('added');
+            }
+            openModal('productModal');
         }
 
-        // ===== ПРОМОКОД =====
+        document.getElementById('modalAddCart').addEventListener('click', function() {
+            if (!currentProductKey) return;
+            toggleCart(currentProductKey);
+            var btn = this;
+            if (cart[currentProductKey]) {
+                btn.textContent = '✓ В КОРЗИНЕ';
+                btn.classList.add('added');
+            } else {
+                btn.textContent = 'В КОРЗИНУ';
+                btn.classList.remove('added');
+            }
+        });
+
+        // ============================================================
+        // ПРОМОКОД
+        // ============================================================
         document.getElementById('promoBtn').addEventListener('click', function() {
             var input = document.getElementById('promoInput');
             var code = input.value.trim().toUpperCase();
             if (code === PROMOCODE) {
                 promoActive = true;
                 this.classList.add('active');
-                this.textContent = '✓';
+                this.textContent = '✓ АКТИВЕН';
                 input.disabled = true;
+                input.style.borderColor = '#00ff88';
+                input.style.color = '#00ff88';
                 updateCartUI();
-                showToast('🎉 Промокод активирован!', 'success');
+                showToast('🎉 Промокод активирован! Цены обнулены.', 'success');
             } else {
-                showToast('❌ Неверный код', 'error');
+                showToast('❌ Неверный промокод', 'error');
             }
         });
 
-        // ===== НАВИГАЦИЯ =====
+        // ============================================================
+        // НАВИГАЦИЯ
+        // ============================================================
         document.querySelectorAll('.nav-item').forEach(function(item) {
             item.addEventListener('click', function() {
                 var page = this.dataset.page;
@@ -841,7 +1305,9 @@
 
         document.getElementById('searchInput').addEventListener('input', renderCatalog);
 
-        // ===== ОФОРМЛЕНИЕ → ОПЛАТА =====
+        // ============================================================
+        // ОФОРМЛЕНИЕ → ОПЛАТА
+        // ============================================================
         document.getElementById('checkoutBtn').addEventListener('click', function() {
             var keys = Object.keys(cart);
             if (keys.length === 0) {
@@ -859,11 +1325,42 @@
                 }
             }
 
-            localStorage.setItem('brawl_total', total.toString());
-            window.location.href = "payment.html";
+            document.getElementById('paymentAmount').textContent = total + ' ₽';
+            openModal('paymentModal');
         });
 
-        // ===== УВЕДОМЛЕНИЯ =====
+        // ============================================================
+        // ОПЛАТА
+        // ============================================================
+        function processPayment() {
+            closeModal('paymentModal');
+            var keys = Object.keys(cart);
+            var total = 0;
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                var p = PRODUCTS.find(function(item) { return item.key === key; });
+                if (p) {
+                    var price = promoActive ? p.priceDisc : p.price;
+                    total += price;
+                }
+            }
+
+            // Сохраняем заказ
+            ordersCount++;
+            localStorage.setItem('brawl_orders', ordersCount.toString());
+            document.getElementById('profileOrders').textContent = ordersCount;
+
+            // Очищаем корзину
+            cart = {};
+            updateCartUI();
+
+            // Показываем успех
+            openModal('successModal');
+        }
+
+        // ============================================================
+        // УВЕДОМЛЕНИЯ
+        // ============================================================
         function showToast(message, type) {
             var toast = document.getElementById('toast');
             toast.textContent = message;
@@ -872,12 +1369,18 @@
             clearTimeout(toast._hide);
             toast._hide = setTimeout(function() {
                 toast.classList.remove('show');
-            }, 2000);
+            }, 2500);
         }
 
+        // ============================================================
+        // ПРОФИЛЬ
+        // ============================================================
         document.getElementById('profileOrders').textContent = ordersCount;
         document.getElementById('profileDate').textContent = new Date().getFullYear();
 
+        // ============================================================
+        // СТАРТ
+        // ============================================================
         updateCartUI();
     </script>
 </body>
