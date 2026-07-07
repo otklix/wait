@@ -176,7 +176,6 @@
             font-weight: 800;
             font-size: 16px;
             text-transform: uppercase;
-            letter-spacing: 1px;
             background: linear-gradient(90deg, #ff00ff, #7b61ff, #0080ff, #00ff99, #ffee00, #ff6600);
             background-size: 400%;
             animation: rainbow 6s linear infinite;
@@ -363,11 +362,6 @@
 
         document.getElementById('cardCvv').addEventListener('input', function() {
             this.value = this.value.replace(/\D/g, '').slice(0, 3);
-        });
-
-        // ===== КНОПКА НАЗАД =====
-        document.querySelector('.back').addEventListener('click', function() {
-            window.location.href = 'index.html';
         });
     </script>
 </body>
