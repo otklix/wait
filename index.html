@@ -58,15 +58,20 @@
             padding: 12px 0 16px;
             border-bottom: 1px solid rgba(0, 255, 136, 0.06);
             margin-bottom: 16px;
+            position: sticky;
+            top: 0;
+            background: #060b12;
+            z-index: 10;
         }
 
         .header h1 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             background: linear-gradient(135deg, #00ff88, #00cc66);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+            cursor: pointer;
         }
 
         .header .cart-badge {
@@ -90,6 +95,100 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
+        }
+
+        .header .back-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 22px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .header .back-btn.show {
+            display: block;
+        }
+
+        /* ============================================================
+           НАВИГАЦИЯ
+           ============================================================ */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(6, 11, 18, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 255, 136, 0.04);
+            display: flex;
+            justify-content: space-around;
+            padding: 6px 0 12px;
+            max-width: 420px;
+            margin: 0 auto;
+            z-index: 100;
+        }
+
+        .bottom-nav .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.06);
+            font-size: 10px;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+            padding: 4px 12px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .bottom-nav .nav-item .icon {
+            font-size: 22px;
+        }
+
+        .bottom-nav .nav-item.active {
+            color: #00ff88;
+        }
+
+        .bottom-nav .nav-item .nav-count {
+            position: absolute;
+            top: -2px;
+            right: 0;
+            background: #00ff88;
+            color: #060b12;
+            font-size: 9px;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bottom-nav .nav-item .nav-count.show {
+            display: flex;
+        }
+
+        /* ============================================================
+           СТРАНИЦЫ
+           ============================================================ */
+        .page {
+            display: none;
+            animation: fadeSlide 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* ============================================================
@@ -331,85 +430,23 @@
             background: rgba(255, 0, 0, 0.08);
         }
 
-        /* ============================================================
-           НАВИГАЦИЯ
-           ============================================================ */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(6, 11, 18, 0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(0, 255, 136, 0.04);
-            display: flex;
-            justify-content: space-around;
-            padding: 6px 0 12px;
-            max-width: 420px;
-            margin: 0 auto;
-            z-index: 100;
-        }
-
-        .bottom-nav .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.06);
-            font-size: 10px;
+        .btn-secondary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.1);
             font-weight: 600;
-            font-family: "Poppins", sans-serif;
+            font-size: 14px;
             cursor: pointer;
-            padding: 4px 12px;
-            position: relative;
             transition: 0.3s;
+            margin-top: 8px;
         }
 
-        .bottom-nav .nav-item .icon {
-            font-size: 22px;
-        }
-
-        .bottom-nav .nav-item.active {
-            color: #00ff88;
-        }
-
-        .bottom-nav .nav-item .nav-count {
-            position: absolute;
-            top: -2px;
-            right: 0;
-            background: #00ff88;
-            color: #060b12;
-            font-size: 9px;
-            font-weight: 700;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bottom-nav .nav-item .nav-count.show {
-            display: flex;
-        }
-
-        /* ============================================================
-           СТРАНИЦЫ
-           ============================================================ */
-        .page {
-            display: none;
-            animation: fadeSlide 0.3s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeSlide {
-            0% { opacity: 0; transform: translateY(8px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
         }
 
         /* ============================================================
@@ -551,26 +588,8 @@
             color: rgba(255, 255, 255, 0.06);
         }
 
-        .profile-card .btn-support {
-            width: 100%;
-            padding: 12px;
-            border-radius: 40px;
-            border: 1px solid rgba(0, 255, 136, 0.04);
-            background: rgba(255, 255, 255, 0.02);
-            color: rgba(255, 255, 255, 0.06);
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .profile-card .btn-support:hover {
-            background: rgba(0, 255, 136, 0.02);
-            color: #fff;
-        }
-
         /* ============================================================
-           ГРИД КАТАЛОГА
+           ГРИД КАТЕГОРИЙ
            ============================================================ */
         .category-grid {
             display: grid;
@@ -608,7 +627,85 @@
         }
 
         /* ============================================================
-           МОДАЛЬНЫЕ ОКНА
+           СТРАНИЦА НАСТРОЕК
+           ============================================================ */
+        .settings-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 255, 136, 0.04);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .settings-item:hover {
+            background: rgba(0, 255, 136, 0.02);
+            border-color: rgba(0, 255, 136, 0.06);
+        }
+
+        .settings-item .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .settings-item .left .icon {
+            font-size: 20px;
+        }
+
+        .settings-item .left .name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .settings-item .right {
+            color: rgba(255, 255, 255, 0.06);
+            font-size: 18px;
+        }
+
+        /* ============================================================
+           ТОСТ УВЕДОМЛЕНИЯ
+           ============================================================ */
+        .toast {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(6, 11, 18, 0.95);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 255, 136, 0.04);
+            padding: 12px 20px;
+            border-radius: 16px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 300;
+            opacity: 0;
+            transition: 0.4s;
+            pointer-events: none;
+            max-width: 340px;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .toast.success {
+            border-color: rgba(0, 255, 136, 0.06);
+        }
+
+        .toast.error {
+            border-color: rgba(255, 71, 87, 0.06);
+        }
+
+        /* ============================================================
+           МОДАЛКИ
            ============================================================ */
         .modal-overlay {
             position: fixed;
@@ -638,6 +735,7 @@
             width: 100%;
             text-align: center;
             animation: pop 0.3s ease;
+            position: relative;
         }
 
         @keyframes pop {
@@ -696,23 +794,15 @@
             border: 1px solid rgba(0, 255, 136, 0.06);
         }
 
-        .modal .btn-secondary {
-            width: 100%;
-            padding: 12px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            background: rgba(255, 255, 255, 0.02);
-            color: rgba(255, 255, 255, 0.1);
-            font-weight: 600;
-            font-size: 14px;
+        .modal .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.06);
+            font-size: 24px;
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 8px;
-        }
-
-        .modal .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.04);
-            color: #fff;
         }
 
         .modal .modal-icon {
@@ -732,64 +822,12 @@
             padding: 8px;
         }
 
-        .modal .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.06);
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .modal-wrap {
-            position: relative;
-        }
-
-        /* ============================================================
-           ТОСТ УВЕДОМЛЕНИЯ
-           ============================================================ */
-        .toast {
-            position: fixed;
-            bottom: 90px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(6, 11, 18, 0.95);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(0, 255, 136, 0.04);
-            padding: 12px 20px;
-            border-radius: 16px;
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 300;
-            opacity: 0;
-            transition: 0.4s;
-            pointer-events: none;
-            max-width: 340px;
-            text-align: center;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-10px);
-        }
-
-        .toast.success {
-            border-color: rgba(0, 255, 136, 0.06);
-        }
-
-        .toast.error {
-            border-color: rgba(255, 71, 87, 0.06);
-        }
-
         /* ============================================================
            АДАПТИВ
            ============================================================ */
         @media (max-width: 440px) {
             .header h1 {
-                font-size: 20px;
+                font-size: 18px;
             }
             .product-icon {
                 width: 48px;
@@ -820,7 +858,8 @@
         ШАПКА
         ============================================================ -->
         <div class="header">
-            <h1>⚡ BRAWL SHOP</h1>
+            <button class="back-btn" id="backBtn" onclick="goBack()">←</button>
+            <h1 onclick="switchPage('home')">⚡ BRAWL SHOP</h1>
             <div class="cart-badge" onclick="switchPage('cart')">
                 🛒
                 <span class="count" id="cartCount">0</span>
@@ -828,7 +867,7 @@
         </div>
 
         <!-- ============================================================
-        СТРАНИЦА: ГЛАВНАЯ
+        СТРАНИЦА: ГЛАВНАЯ (home)
         ============================================================ -->
         <div class="page active" id="page-home">
             <div class="banner">
@@ -841,14 +880,21 @@
                 <button class="btn-promo" id="promoBtn">АКТИВИРОВАТЬ</button>
             </div>
 
-            <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:12px;">
                 <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.06);">🔥 ПОПУЛЯРНЫЕ</span>
+                <span style="font-size:12px;color:rgba(255,255,255,0.06);cursor:pointer;" onclick="switchPage('catalog')">Смотреть все →</span>
             </div>
             <div id="productsList"></div>
+
+            <div style="display:flex;justify-content:space-between;margin:16px 0 12px;">
+                <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.06);">🆕 НОВИНКИ</span>
+                <span style="font-size:12px;color:rgba(255,255,255,0.06);cursor:pointer;" onclick="switchPage('new')">Смотреть все →</span>
+            </div>
+            <div id="newProductsList"></div>
         </div>
 
         <!-- ============================================================
-        СТРАНИЦА: КАТАЛОГ
+        СТРАНИЦА: КАТАЛОГ (catalog)
         ============================================================ -->
         <div class="page" id="page-catalog">
             <div style="padding: 8px 0 16px;">
@@ -856,41 +902,41 @@
             </div>
 
             <div class="category-grid">
-                <div class="category-item" onclick="switchPage('home')">
-                    <span class="icon">🔥</span>
-                    <span class="name">Популярные</span>
+                <div class="category-item" onclick="filterCategory('all')">
+                    <span class="icon">📦</span>
+                    <span class="name">Все</span>
                 </div>
-                <div class="category-item" onclick="showToast('⭐ Мифические скины','success')">
-                    <span class="icon">⭐</span>
-                    <span class="name">Мифические</span>
+                <div class="category-item" onclick="filterCategory('skins')">
+                    <span class="icon">🎨</span>
+                    <span class="name">Скины</span>
                 </div>
-                <div class="category-item" onclick="showToast('💎 Легендарные скины','success')">
-                    <span class="icon">💎</span>
-                    <span class="name">Легендарные</span>
-                </div>
-                <div class="category-item" onclick="showToast('👤 Все бойцы','success')">
-                    <span class="icon">👤</span>
-                    <span class="name">Бойцы</span>
-                </div>
-                <div class="category-item" onclick="showToast('💎 Гемы и монеты','success')">
+                <div class="category-item" onclick="filterCategory('gems')">
                     <span class="icon">💎</span>
                     <span class="name">Гемы</span>
                 </div>
-                <div class="category-item" onclick="showToast('🚀 Услуги вкачки','success')">
+                <div class="category-item" onclick="filterCategory('brawlers')">
+                    <span class="icon">👤</span>
+                    <span class="name">Бойцы</span>
+                </div>
+                <div class="category-item" onclick="filterCategory('services')">
                     <span class="icon">🚀</span>
                     <span class="name">Услуги</span>
                 </div>
-                <div class="category-item" onclick="showToast('💰 Акции и скидки','success')">
+                <div class="category-item" onclick="filterCategory('deals')">
                     <span class="icon">💰</span>
                     <span class="name">Акции</span>
                 </div>
-                <div class="category-item" onclick="showToast('🎮 Боевой пропуск','success')">
+                <div class="category-item" onclick="filterCategory('pass')">
                     <span class="icon">🎮</span>
                     <span class="name">Боевой пропуск</span>
                 </div>
-                <div class="category-item" onclick="showToast('🎨 Все скины','success')">
-                    <span class="icon">🎨</span>
-                    <span class="name">Все скины</span>
+                <div class="category-item" onclick="filterCategory('hyper')">
+                    <span class="icon">⚡</span>
+                    <span class="name">Hypercharge</span>
+                </div>
+                <div class="category-item" onclick="filterCategory('icons')">
+                    <span class="icon">🖼️</span>
+                    <span class="name">Иконки</span>
                 </div>
             </div>
 
@@ -898,7 +944,39 @@
         </div>
 
         <!-- ============================================================
-        СТРАНИЦА: КОРЗИНА
+        СТРАНИЦА: НОВИНКИ (new)
+        ============================================================ -->
+        <div class="page" id="page-new">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">🆕 Новинки</h2>
+            <div id="newFullList"></div>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: ХИТЫ (hits)
+        ============================================================ -->
+        <div class="page" id="page-hits">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">🔥 Хиты продаж</h2>
+            <div id="hitsList"></div>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: СКИДКИ (sales)
+        ============================================================ -->
+        <div class="page" id="page-sales">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">💰 Скидки и акции</h2>
+            <div id="salesList"></div>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: ИЗБРАННОЕ (favorites)
+        ============================================================ -->
+        <div class="page" id="page-favorites">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">❤️ Избранное</h2>
+            <div id="favoritesList"></div>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: КОРЗИНА (cart)
         ============================================================ -->
         <div class="page" id="page-cart">
             <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">🛒 Корзина</h2>
@@ -911,7 +989,7 @@
         </div>
 
         <!-- ============================================================
-        СТРАНИЦА: ПРОФИЛЬ
+        СТРАНИЦА: ПРОФИЛЬ (profile)
         ============================================================ -->
         <div class="page" id="page-profile">
             <div class="profile-card">
@@ -928,8 +1006,115 @@
                         <div class="label">Дата</div>
                     </div>
                 </div>
-                <button class="btn-support" onclick="showToast('💬 Свяжитесь с нами: @support_bot','success')">💬 Поддержка</button>
+                <button class="btn-secondary" onclick="switchPage('history')">📜 История заказов</button>
+                <button class="btn-secondary" onclick="switchPage('settings')">⚙️ Настройки</button>
+                <button class="btn-secondary" onclick="switchPage('about')">ℹ️ О магазине</button>
+                <button class="btn-secondary" onclick="switchPage('support')">💬 Поддержка</button>
             </div>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: НАСТРОЙКИ (settings)
+        ============================================================ -->
+        <div class="page" id="page-settings">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">⚙️ Настройки</h2>
+            <div class="settings-item" onclick="showToast('🌙 Тема: тёмная','success')">
+                <div class="left"><span class="icon">🌙</span><span class="name">Тема оформления</span></div>
+                <div class="right">→</div>
+            </div>
+            <div class="settings-item" onclick="showToast('🔔 Уведомления включены','success')">
+                <div class="left"><span class="icon">🔔</span><span class="name">Уведомления</span></div>
+                <div class="right">→</div>
+            </div>
+            <div class="settings-item" onclick="showToast('🌐 Язык: Русский','success')">
+                <div class="left"><span class="icon">🌐</span><span class="name">Язык</span></div>
+                <div class="right">→</div>
+            </div>
+            <div class="settings-item" onclick="showToast('🔒 Безопасность','success')">
+                <div class="left"><span class="icon">🔒</span><span class="name">Безопасность</span></div>
+                <div class="right">→</div>
+            </div>
+            <div class="settings-item" onclick="showToast('📱 Привязанные аккаунты','success')">
+                <div class="left"><span class="icon">📱</span><span class="name">Привязанные аккаунты</span></div>
+                <div class="right">→</div>
+            </div>
+            <div class="settings-item" onclick="showToast('📧 Смена почты','success')">
+                <div class="left"><span class="icon">📧</span><span class="name">Смена почты</span></div>
+                <div class="right">→</div>
+            </div>
+            <button class="btn-secondary" onclick="switchPage('profile')">← Назад</button>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: ИСТОРИЯ ЗАКАЗОВ (history)
+        ============================================================ -->
+        <div class="page" id="page-history">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">📜 История заказов</h2>
+            <div id="historyList"></div>
+            <button class="btn-secondary" onclick="switchPage('profile')">← Назад</button>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: О МАГАЗИНЕ (about)
+        ============================================================ -->
+        <div class="page" id="page-about">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">ℹ️ О магазине</h2>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(0,255,136,0.04);border-radius:16px;padding:20px;text-align:center;">
+                <span style="font-size:48px;display:block;margin-bottom:12px;">⚡</span>
+                <h3 style="font-size:18px;font-weight:700;margin-bottom:4px;">BRAWL SHOP</h3>
+                <p style="font-size:14px;color:rgba(255,255,255,0.2);">Магазин скинов, гемов и услуг для Brawl Stars</p>
+                <p style="font-size:13px;color:rgba(255,255,255,0.06);margin-top:12px;">Версия 2.0.0</p>
+                <p style="font-size:12px;color:rgba(255,255,255,0.04);">© 2026 Все права защищены</p>
+            </div>
+            <button class="btn-secondary" onclick="switchPage('profile')">← Назад</button>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: ПОДДЕРЖКА (support)
+        ============================================================ -->
+        <div class="page" id="page-support">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">💬 Поддержка</h2>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(0,255,136,0.04);border-radius:16px;padding:20px;">
+                <div class="settings-item" onclick="showToast('💬 Чат с поддержкой','success')">
+                    <div class="left"><span class="icon">💬</span><span class="name">Онлайн-чат</span></div>
+                    <div class="right">→</div>
+                </div>
+                <div class="settings-item" onclick="showToast('📧 support@brawlshop.com','success')">
+                    <div class="left"><span class="icon">📧</span><span class="name">Email</span></div>
+                    <div class="right">→</div>
+                </div>
+                <div class="settings-item" onclick="showToast('📞 +7 (999) 123-45-67','success')">
+                    <div class="left"><span class="icon">📞</span><span class="name">Телефон</span></div>
+                    <div class="right">→</div>
+                </div>
+                <div class="settings-item" onclick="showToast('📱 Telegram: @support_bot','success')">
+                    <div class="left"><span class="icon">📱</span><span class="name">Telegram</span></div>
+                    <div class="right">→</div>
+                </div>
+            </div>
+            <button class="btn-secondary" onclick="switchPage('profile')">← Назад</button>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА: FAQ (faq)
+        ============================================================ -->
+        <div class="page" id="page-faq">
+            <h2 style="font-size:20px;font-weight:800;margin-bottom:12px;">❓ Часто задаваемые вопросы</h2>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(0,255,136,0.04);border-radius:16px;padding:16px;">
+                <div style="margin-bottom:12px;">
+                    <h4 style="font-weight:700;font-size:14px;color:#00ff88;">Как активировать промокод?</h4>
+                    <p style="font-size:13px;color:rgba(255,255,255,0.2);">Введите промокод в поле на главной странице и нажмите «Активировать».</p>
+                </div>
+                <div style="margin-bottom:12px;">
+                    <h4 style="font-weight:700;font-size:14px;color:#00ff88;">Как добавить товар в корзину?</h4>
+                    <p style="font-size:13px;color:rgba(255,255,255,0.2);">Нажмите на товар, затем на кнопку «В корзину».</p>
+                </div>
+                <div>
+                    <h4 style="font-weight:700;font-size:14px;color:#00ff88;">Как оформить заказ?</h4>
+                    <p style="font-size:13px;color:rgba(255,255,255,0.2);">Перейдите в корзину и нажмите «Оформить заказ».</p>
+                </div>
+            </div>
+            <button class="btn-secondary" onclick="switchPage('home')">← На главную</button>
         </div>
     </div>
 
@@ -956,7 +1141,7 @@
     МОДАЛКА КАРТОЧКИ ТОВАРА
     ============================================================ -->
     <div class="modal-overlay" id="productModal">
-        <div class="modal modal-wrap">
+        <div class="modal">
             <button class="close-btn" onclick="closeModal('productModal')">✕</button>
             <div class="modal-icon"><img id="modalProductImg" src="" alt="" /></div>
             <h2 id="modalProductName">Товар</h2>
@@ -974,8 +1159,8 @@
         <div class="modal">
             <span class="emoji">💳</span>
             <h2>Выберите способ оплаты</h2>
-            <p style="margin-bottom:12px;">Сумма: <strong id="paymentAmount" style="color:#00ff88;">0 ₽</strong></p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+            <p>Сумма: <strong id="paymentAmount" style="color:#00ff88;">0 ₽</strong></p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;">
                 <button class="btn-primary" style="font-size:12px;" onclick="processPayment()">🟢 Сбер</button>
                 <button class="btn-primary" style="font-size:12px;" onclick="processPayment()">🟡 Т-Банк</button>
                 <button class="btn-primary" style="font-size:12px;" onclick="processPayment()">🔵 ВТБ</button>
@@ -998,7 +1183,7 @@
     </div>
 
     <!-- ============================================================
-    ТОСТ УВЕДОМЛЕНИЯ
+    ТОСТ
     ============================================================ -->
     <div class="toast" id="toast"></div>
 
@@ -1013,6 +1198,9 @@
         var promoActive = false;
         var cart = JSON.parse(localStorage.getItem('brawl_cart') || '{}');
         var ordersCount = parseInt(localStorage.getItem('brawl_orders') || '0');
+        var favorites = JSON.parse(localStorage.getItem('brawl_favorites') || '[]');
+        var history = JSON.parse(localStorage.getItem('brawl_history') || '[]');
+        var currentCategory = 'all';
 
         var PRODUCTS = [{
             key: 'cybershell',
@@ -1021,6 +1209,8 @@
             priceDisc: 0,
             img: 'Cibershelly.PNG',
             hot: true,
+            new: true,
+            category: 'skins',
             rating: 4.8,
             reviews: 26539,
             desc: 'Легендарный скин Кибершелли'
@@ -1031,6 +1221,8 @@
             priceDisc: 0,
             img: 'Volt.PNG',
             hot: false,
+            new: false,
+            category: 'skins',
             rating: 4.6,
             reviews: 12453,
             desc: 'Эпический скин Вольт'
@@ -1041,10 +1233,74 @@
             priceDisc: 0,
             img: 'Push20k.PNG',
             hot: true,
+            new: true,
+            category: 'services',
             rating: 4.9,
             reviews: 8742,
             desc: 'Услуга вкачки 20000 кубков'
+        }, {
+            key: 'gems300',
+            name: '300 ГЕМОВ',
+            price: 1099,
+            priceDisc: 0,
+            img: 'gems.png',
+            hot: false,
+            new: false,
+            category: 'gems',
+            rating: 4.7,
+            reviews: 34521,
+            desc: '300 гемов для Brawl Stars'
+        }, {
+            key: 'brawlpass',
+            name: 'БОЕВОЙ ПРОПУСК',
+            price: 1349,
+            priceDisc: 0,
+            img: 'pass.png',
+            hot: true,
+            new: true,
+            category: 'pass',
+            rating: 4.9,
+            reviews: 12876,
+            desc: 'Боевой пропуск на сезон'
+        }, {
+            key: 'hypercharge',
+            name: 'HYPERCHARGE',
+            price: 599,
+            priceDisc: 0,
+            img: 'hyper.png',
+            hot: false,
+            new: true,
+            category: 'hyper',
+            rating: 4.5,
+            reviews: 5432,
+            desc: 'Hypercharge для бойца'
+        }, {
+            key: 'iconpack',
+            name: 'НАБОР ИКОНОК',
+            price: 349,
+            priceDisc: 0,
+            img: 'icons.png',
+            hot: false,
+            new: false,
+            category: 'icons',
+            rating: 4.3,
+            reviews: 3210,
+            desc: 'Набор из 10 уникальных иконок'
+        }, {
+            key: 'brawler',
+            name: 'НОВЫЙ БОЕЦ',
+            price: 799,
+            priceDisc: 0,
+            img: 'brawler.png',
+            hot: true,
+            new: true,
+            category: 'brawlers',
+            rating: 4.8,
+            reviews: 9876,
+            desc: 'Уникальный боец с гиперзарядом'
         }];
+
+        var pageStack = ['home'];
 
         // ============================================================
         // TELEGRAM
@@ -1057,331 +1313,4 @@
                     document.getElementById('profileName').textContent = user.first_name || 'Игрок';
                     document.getElementById('profileUsername').textContent = '@' + (user.username || 'telegram');
                     if (user.photo_url) {
-                        document.getElementById('profileAvatarImg').src = user.photo_url;
-                    }
-                }
-            }
-        } catch (_) {}
-
-        // ============================================================
-        // МОДАЛКИ
-        // ============================================================
-        function openModal(id) {
-            document.getElementById(id).classList.add('show');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('show');
-        }
-
-        // Закрытие по клику вне
-        document.querySelectorAll('.modal-overlay').forEach(function(el) {
-            el.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('show');
-                }
-            });
-        });
-
-        // ============================================================
-        // ОБНОВЛЕНИЕ
-        // ============================================================
-        function updateCartUI() {
-            var count = Object.keys(cart).length;
-            document.getElementById('cartCount').textContent = count;
-            var navCount = document.getElementById('navCartCount');
-            if (count > 0) {
-                navCount.textContent = count;
-                navCount.classList.add('show');
-            } else {
-                navCount.classList.remove('show');
-            }
-            renderCart();
-            renderProducts();
-            renderCatalog();
-            localStorage.setItem('brawl_cart', JSON.stringify(cart));
-        }
-
-        // ============================================================
-        // РЕНДЕР ТОВАРОВ
-        // ============================================================
-        function renderProducts() {
-            var html = '';
-            PRODUCTS.forEach(function(p) {
-                var price = promoActive ? p.priceDisc : p.price;
-                var priceHtml = (promoActive && p.priceDisc === 0) ?
-                    '<span class="old">' + p.price + ' ₽</span> 0 ₽' :
-                    p.price + ' ₽';
-                var inCart = cart[p.key] ? true : false;
-                var hotHtml = p.hot ? '<span class="hot-badge">🔥 ХИТ</span>' : '';
-                html += `
-                    <div class="product" onclick="openProduct('${p.key}')">
-                        ${hotHtml}
-                        <div class="product-icon"><img src="${p.img}" /></div>
-                        <div class="product-info">
-                            <div class="product-name">${p.name}</div>
-                            <div class="product-price" id="price-${p.key}">${priceHtml}</div>
-                            <div class="rating"><span class="stars">${'★'.repeat(Math.floor(p.rating))}</span> ${p.rating} (${p.reviews})</div>
-                        </div>
-                        <button class="btn-cart ${inCart ? 'added' : ''}" data-key="${p.key}" onclick="event.stopPropagation();toggleCart('${p.key}')">
-                            ${inCart ? '✓' : 'В КОРЗИНУ'}
-                        </button>
-                    </div>
-                `;
-            });
-            document.getElementById('productsList').innerHTML = html;
-        }
-
-        // ============================================================
-        // РЕНДЕР КАТАЛОГА
-        // ============================================================
-        function renderCatalog() {
-            var search = document.getElementById('searchInput').value.toLowerCase();
-            var filtered = PRODUCTS.filter(function(p) {
-                return p.name.toLowerCase().includes(search);
-            });
-            var html = '';
-            filtered.forEach(function(p) {
-                var price = promoActive ? p.priceDisc : p.price;
-                var priceHtml = (promoActive && p.priceDisc === 0) ?
-                    '<span class="old">' + p.price + ' ₽</span> 0 ₽' :
-                    p.price + ' ₽';
-                var inCart = cart[p.key] ? true : false;
-                html += `
-                    <div class="product" onclick="openProduct('${p.key}')">
-                        <div class="product-icon"><img src="${p.img}" /></div>
-                        <div class="product-info">
-                            <div class="product-name">${p.name}</div>
-                            <div class="product-price">${priceHtml}</div>
-                            <div class="rating"><span class="stars">${'★'.repeat(Math.floor(p.rating))}</span> (${p.reviews})</div>
-                        </div>
-                        <button class="btn-cart ${inCart ? 'added' : ''}" data-key="${p.key}" onclick="event.stopPropagation();toggleCart('${p.key}')">
-                            ${inCart ? '✓' : 'В КОРЗИНУ'}
-                        </button>
-                    </div>
-                `;
-            });
-            document.getElementById('catalogList').innerHTML = html;
-        }
-
-        // ============================================================
-        // РЕНДЕР КОРЗИНЫ
-        // ============================================================
-        function renderCart() {
-            var keys = Object.keys(cart);
-            var container = document.getElementById('cartList');
-            var total = 0;
-
-            if (keys.length === 0) {
-                container.innerHTML =
-                    '<div class="cart-empty"><span class="big-icon">🛒</span>Корзина пуста</div>';
-                document.getElementById('cartTotalPrice').textContent = '0 ₽';
-                return;
-            }
-
-            var html = '';
-            keys.forEach(function(key) {
-                var p = PRODUCTS.find(function(item) { return item.key === key; });
-                if (!p) return;
-                var price = promoActive ? p.priceDisc : p.price;
-                total += price;
-                html += `
-                    <div class="cart-item">
-                        <div class="item-icon"><img src="${p.img}" /></div>
-                        <div class="item-info">
-                            <div class="item-name">${p.name}</div>
-                            <div class="item-price">${price} ₽</div>
-                        </div>
-                        <button class="btn-remove" onclick="removeFromCart('${key}')">✕</button>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-            document.getElementById('cartTotalPrice').textContent = total + ' ₽';
-        }
-
-        // ============================================================
-        // КОРЗИНА
-        // ============================================================
-        function toggleCart(key) {
-            if (cart[key]) {
-                delete cart[key];
-                showToast('🗑️ Удалено', 'error');
-            } else {
-                cart[key] = true;
-                showToast('✅ Добавлено', 'success');
-            }
-            updateCartUI();
-        }
-
-        function removeFromCart(key) {
-            delete cart[key];
-            updateCartUI();
-            showToast('🗑️ Удалено', 'error');
-        }
-
-        // ============================================================
-        // ОТКРЫТИЕ ТОВАРА
-        // ============================================================
-        var currentProductKey = null;
-
-        function openProduct(key) {
-            var p = PRODUCTS.find(function(item) { return item.key === key; });
-            if (!p) return;
-            currentProductKey = key;
-            var price = promoActive ? p.priceDisc : p.price;
-            document.getElementById('modalProductImg').src = p.img;
-            document.getElementById('modalProductName').textContent = p.name;
-            document.getElementById('modalProductPrice').textContent = price + ' ₽';
-            document.getElementById('modalProductDesc').textContent = p.desc + ' ★' + p.rating + ' (' + p.reviews +
-            ' отзывов)';
-            var btn = document.getElementById('modalAddCart');
-            if (cart[key]) {
-                btn.textContent = '✓ В КОРЗИНЕ';
-                btn.classList.add('added');
-            } else {
-                btn.textContent = 'В КОРЗИНУ';
-                btn.classList.remove('added');
-            }
-            openModal('productModal');
-        }
-
-        document.getElementById('modalAddCart').addEventListener('click', function() {
-            if (!currentProductKey) return;
-            toggleCart(currentProductKey);
-            var btn = this;
-            if (cart[currentProductKey]) {
-                btn.textContent = '✓ В КОРЗИНЕ';
-                btn.classList.add('added');
-            } else {
-                btn.textContent = 'В КОРЗИНУ';
-                btn.classList.remove('added');
-            }
-        });
-
-        // ============================================================
-        // ПРОМОКОД
-        // ============================================================
-        document.getElementById('promoBtn').addEventListener('click', function() {
-            var input = document.getElementById('promoInput');
-            var code = input.value.trim().toUpperCase();
-            if (code === PROMOCODE) {
-                promoActive = true;
-                this.classList.add('active');
-                this.textContent = '✓ АКТИВЕН';
-                input.disabled = true;
-                input.style.borderColor = '#00ff88';
-                input.style.color = '#00ff88';
-                updateCartUI();
-                showToast('🎉 Промокод активирован! Цены обнулены.', 'success');
-            } else {
-                showToast('❌ Неверный промокод', 'error');
-            }
-        });
-
-        // ============================================================
-        // НАВИГАЦИЯ
-        // ============================================================
-        document.querySelectorAll('.nav-item').forEach(function(item) {
-            item.addEventListener('click', function() {
-                var page = this.dataset.page;
-                switchPage(page);
-            });
-        });
-
-        function switchPage(page) {
-            document.querySelectorAll('.page').forEach(function(p) {
-                p.classList.remove('active');
-            });
-            document.getElementById('page-' + page).classList.add('active');
-            document.querySelectorAll('.nav-item').forEach(function(n) {
-                n.classList.toggle('active', n.dataset.page === page);
-            });
-            if (page === 'cart') renderCart();
-            if (page === 'catalog') renderCatalog();
-            if (page === 'home') renderProducts();
-        }
-
-        document.getElementById('searchInput').addEventListener('input', renderCatalog);
-
-        // ============================================================
-        // ОФОРМЛЕНИЕ → ОПЛАТА
-        // ============================================================
-        document.getElementById('checkoutBtn').addEventListener('click', function() {
-            var keys = Object.keys(cart);
-            if (keys.length === 0) {
-                showToast('❌ Корзина пуста', 'error');
-                return;
-            }
-
-            var total = 0;
-            for (var i = 0; i < keys.length; i++) {
-                var key = keys[i];
-                var p = PRODUCTS.find(function(item) { return item.key === key; });
-                if (p) {
-                    var price = promoActive ? p.priceDisc : p.price;
-                    total += price;
-                }
-            }
-
-            document.getElementById('paymentAmount').textContent = total + ' ₽';
-            openModal('paymentModal');
-        });
-
-        // ============================================================
-        // ОПЛАТА
-        // ============================================================
-        function processPayment() {
-            closeModal('paymentModal');
-            var keys = Object.keys(cart);
-            var total = 0;
-            for (var i = 0; i < keys.length; i++) {
-                var key = keys[i];
-                var p = PRODUCTS.find(function(item) { return item.key === key; });
-                if (p) {
-                    var price = promoActive ? p.priceDisc : p.price;
-                    total += price;
-                }
-            }
-
-            // Сохраняем заказ
-            ordersCount++;
-            localStorage.setItem('brawl_orders', ordersCount.toString());
-            document.getElementById('profileOrders').textContent = ordersCount;
-
-            // Очищаем корзину
-            cart = {};
-            updateCartUI();
-
-            // Показываем успех
-            openModal('successModal');
-        }
-
-        // ============================================================
-        // УВЕДОМЛЕНИЯ
-        // ============================================================
-        function showToast(message, type) {
-            var toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = 'toast' + (type ? ' ' + type : '');
-            toast.classList.add('show');
-            clearTimeout(toast._hide);
-            toast._hide = setTimeout(function() {
-                toast.classList.remove('show');
-            }, 2500);
-        }
-
-        // ============================================================
-        // ПРОФИЛЬ
-        // ============================================================
-        document.getElementById('profileOrders').textContent = ordersCount;
-        document.getElementById('profileDate').textContent = new Date().getFullYear();
-
-        // ============================================================
-        // СТАРТ
-        // ============================================================
-        updateCartUI();
-    </script>
-</body>
-</html>
+                        document.getElementById
